@@ -1,27 +1,36 @@
 'use strict';
 
-var map = require('map-stream');
+var map = require('map-stream'),
+  _log = console.log;
 
 module.exports = function (settings) {
 
-  if (typeof(settings) !== 'object') {
+  if (typeof settings !== 'object') {
     settings = {
       duration: settings
     };
   }
 
-  settings.duration || (settings.duration = 1000);
+  if (!settings.verbose) {
+    _log = function () {
+      return;
+    };
+  }
 
-  return map(function (file, cb) {    
+  settings.duration = settings.duration || 1000;
 
-    if (typeof(settings.before) === 'function') {
+  return map(function (file, cb) {
+
+    if (typeof settings.before === 'function') {
+      _log('Wait: Calling before()');
       settings.before();
     }
 
-    var timeout = setTimeout(function() {
+    var timeout = setTimeout(function () {
       timeout = null;
-      console.log('Reloaded after', settings.duration);
-      if (typeof(settings.after) === 'function') {
+      _log('Wait: Waited', settings.duration);
+      if (typeof settings.after === 'function') {
+        _log('Wait: Calling after()');
         settings.after();
       }
       cb(null, file);
