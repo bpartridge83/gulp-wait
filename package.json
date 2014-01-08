@@ -1,6 +1,6 @@
 {
   "name": "gulp-wait",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A gulp task that inserts a delay before calling the next function in a chain.",
   "main": "index.js",
   "scripts": {
