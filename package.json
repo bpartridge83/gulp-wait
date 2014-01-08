@@ -1,0 +1,27 @@
+{
+  "name": "gulp-wait",
+  "version": "0.0.1",
+  "description": "A gulp task that inserts a delay before calling the next function in a chain.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bpartridge83/gulp-wait.git"
+  },
+  "keywords": [
+    "gulp",
+    "wait",
+    "delay",
+    "gulpplugin"
+  ],
+  "author": "Brian Partridge",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/bpartridge/gulp-wait/issues"
+  },
+  "dependencies": {
+    "map-stream": "0.0.4"
+  }
+}
