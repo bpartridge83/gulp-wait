@@ -1,14 +1,15 @@
 {
-  "name": "gulp-wait",
-  "version": "0.0.2",
-  "description": "A gulp task that inserts a delay before calling the next function in a chain.",
-  "main": "index.js",
+  "name": "gulp-wait2",
+  "version": "0.0.3",
+  "description": "A gulp task that inserts a delay (time or callback-based) before calling the next function in a chain. (Forked from bpartridge/gulp-wait)",
+  "main": "index-compiled.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel index.es6 --out-file index.js --source-maps inline",
+    "test": "npm run build && tape 'tests/**/*.js'"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bpartridge83/gulp-wait.git"
+    "url": "https://github.com/cwramsey/gulp-wait.git"
   },
   "keywords": [
     "gulp",
@@ -16,12 +17,20 @@
     "delay",
     "gulpplugin"
   ],
-  "author": "Brian Partridge",
+  "author": "Chris Ramsey",
+  "contributors": [
+    "Brian Partridge"
+  ],
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/bpartridge/gulp-wait/issues"
+    "url": "https://github.com/cwramsey/gulp-wait/issues"
   },
   "dependencies": {
     "map-stream": "0.0.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-preset-es2015": "^6.9.0",
+    "tape": "^4.5.1"
   }
 }
