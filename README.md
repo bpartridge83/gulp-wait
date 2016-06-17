@@ -46,3 +46,24 @@ Waits for a callback to be truthy before executing the next item in the chain.
   });
 
 ```
+
+### Using an options object
+
+You can pass in an options object as well.
+
+```javascript
+
+const options = {
+  time: 100, // same as wait(100)
+  callback: () => true, // same as wait(() => true) - defaults to callback if both time and callback are passed
+  before: () => {},
+  after: () => {}
+};
+
+gulp.task('wait', function() {
+  gulp.src('yourfile.js')
+      .pipe(wait(options))
+      .pipe(gulp.dest('destfile.js'));
+});
+
+```
