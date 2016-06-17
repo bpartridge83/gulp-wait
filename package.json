@@ -1,6 +1,6 @@
 {
   "name": "gulp-wait2",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A gulp task that inserts a delay (time or callback-based) before calling the next function in a chain. (Forked from bpartridge/gulp-wait)",
   "main": "index-compiled.js",
   "scripts": {
