@@ -5,36 +5,44 @@ A gulp task that inserts a delay before calling the next function in a chain.
 
 ## Example
 
-The following example will watch for changes to templates and delay the livereload server refresh until after the nodemon script is expected to have restarted.
+### Time based delay
+
+Waits a specified number of milliseconds before executing the next item in the chain.
 
 ```javascript
-// Gulpfile.js
-var gulp = require('gulp')
-  , r = require('tiny-lr')
-  , refresh = require('gulp-livereload')
-  , nodemon = require('gulp-nodemon')
-  , wait = require('../gulp-wait')
-  , server = lr();
 
-gulp.task('dev', function () {
+  var wait = require('gulp-wait');
 
-  gulp.src('./index.js')
-    .pipe(nodemon());
-
-  server.listen(35729, function (err) {
-
-  	if (err) return console.log(err);
-
-  	gulp.watch('./app/views/**/*.html', function (e) {
-      gulp.src(e.path)
+  gulp.task('wait', function() {
+    gulp.src('yourfile.js')
         .pipe(wait(1500))
-        .pipe(refresh(server));
-    });
-
+        .pipe(gulp.dest('destfile.js'));
   });
-
-})
 
 ```
 
-Yes, ideally there would be an event from nodemon to trigger the livereload.
+### Callback based delay
+
+Waits for a callback to be truthy before executing the next item in the chain.
+
+```javascript
+
+  var wait = require('gulp-wait');
+  var fs = require('fs');
+
+  function doesFileExist(filePath) {
+    try {
+      fs.accessSync(filePath);
+      return true;
+    } catch () {
+      return false;
+    }
+  }
+
+  gulp.task('wait', function() {
+    gulp.src('yourfile.js')
+        .pipe(wait(doesFileExist('../path/to/some/file.js')))
+        .pipe(gulp.dest('destfile.js'));
+  });
+
+```
