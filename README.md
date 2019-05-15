@@ -13,7 +13,7 @@ var gulp = require('gulp')
   , r = require('tiny-lr')
   , refresh = require('gulp-livereload')
   , nodemon = require('gulp-nodemon')
-  , wait = require('../gulp-wait')
+  , wait = require('gulp-wait')
   , server = lr();
 
 gulp.task('dev', function () {
